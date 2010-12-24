@@ -4,20 +4,21 @@ module Jqgrid
     mattr_accessor :jrails_present
 
     def jqgrid_stylesheets
-      css  = stylesheet_link_tag('jqgrid/jquery-ui-1.7.1.custom.css') + "\n"
+      css  = stylesheet_link_tag('jqgrid/jquery-ui-1.8.7.custom.css') + "\n"
       css << stylesheet_link_tag('jqgrid/ui.jqgrid.css') + "\n"
     end
 
     def jqgrid_javascripts
       locale = I18n.locale rescue :en
       js =  ''
-      js << javascript_include_tag('jqgrid/jquery.js') + "\n" unless Jqgrid.jrails_present
+      js << javascript_include_tag('jqgrid/jquery-1.4.2.min.js') + "\n" unless Jqgrid.jrails_present
       js << javascript_include_tag('jqgrid/jquery-ui-1.7.1.custom.min.js') + "\n"
       js << javascript_include_tag('jqgrid/jquery.layout.js') + "\n"
       js << javascript_include_tag("jqgrid/i18n/grid.locale-#{locale}.js") + "\n"
       js << javascript_include_tag('jqgrid/jquery.jqGrid.min.js') + "\n"
       js << javascript_include_tag('jqgrid/jquery.tablednd.js') + "\n"
       js << javascript_include_tag('jqgrid/jquery.contextmenu.js') + "\n"
+      js = raw(js)
     end
 
     def jqgrid(title, id, action, columns = [], options = {})
@@ -25,10 +26,10 @@ module Jqgrid
       # Default options
       options = 
         { 
-          :rows_per_page       => '10',
+          :rows_per_page       => '22',
           :sort_column         => '',
           :sort_order          => '',
-          :height              => '150',
+          :height              => '500',
           :gridview            => 'false',
           :error_handler       => 'null',
           :inline_edit_handler => 'null',
@@ -242,7 +243,7 @@ module Jqgrid
       end
 
       # Generate required Javascript & html to create the jqgrid
-      %Q(
+      raw(%Q(
         <script type="text/javascript">
           var lastsel;
           #{'jQuery(document).ready(function(){' unless options[:omit_ready]=='true'}
@@ -287,7 +288,7 @@ module Jqgrid
         </script>
         <table id="#{id}" class="scroll" cellpadding="0" cellspacing="0"></table>
         <div id="#{id}_pager" class="scroll" style="text-align:center;"></div>
-      )
+      ))
     end
 
     private
