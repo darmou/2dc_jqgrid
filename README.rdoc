@@ -24,7 +24,7 @@ You can now generate a grid using a command like this one :
   $ rails generate jqgrid user id pseudo email firstname
 
 
-Copyright (c) 2009 Anthony Heukmes, released under the MIT license
+Copyright (c) 2009,2011 Anthony Heukmes, Daryl Moulder released under the MIT license
 
 My Rails blog : http://2dconcept.com
 My Twitter account : http://twitter.com/2dc
