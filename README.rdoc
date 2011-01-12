@@ -21,7 +21,7 @@ A sample app is available here : http://github.com/ahe/jqgrid_demo_app
 
 You can now generate a grid using a command like this one :
 
-  $ ./script/generate jqgrid user id pseudo email firstname
+  $ rails generate jqgrid user id pseudo email firstname
 
 
 Copyright (c) 2009 Anthony Heukmes, released under the MIT license
