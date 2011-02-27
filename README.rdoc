@@ -23,6 +23,14 @@ You can now generate a grid using a command like this one :
 
   $ rails generate jqgrid user id pseudo email firstname
 
+= Notes
+
+You need to install as a plugin https://github.com/thoughtbot/squirrel 
+
+You also need to put in your application views:
+
+<%= jqgrid_stylesheets %> 
+<%= jqgrid_javascripts %>
 
 Copyright (c) 2009,2011 Anthony Heukmes, Daryl Moulder released under the MIT license
 
